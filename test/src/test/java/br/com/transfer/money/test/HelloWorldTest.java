@@ -1,4 +1,4 @@
-package br.com.transfer.money.service.test;
+package br.com.transfer.money.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 

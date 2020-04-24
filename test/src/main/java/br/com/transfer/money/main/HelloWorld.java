@@ -1,4 +1,4 @@
-package br.com.transfer.money.service.main;
+package br.com.transfer.money.main;
 
 import java.util.logging.Logger;
 

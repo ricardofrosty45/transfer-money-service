@@ -23,8 +23,6 @@
             <id>developeName</id>
             <email>luanricardo@gmail.com</email>
             <name>Luan Ricardo De Luna Vieira Venancio</name>
-            <organization>Example Organization</organization>
-            <organizationUrl>http://example.com/</organizationUrl>
             <roles>
                 <role>architect</role>
                 <role>developer</role>
@@ -35,7 +33,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>br.com.transfer.money.HelloWorld</main.class>
+        <main.class>br.com.transfer.money.main.StartService</main.class>
         <java.version>8</java.version>
         <junit.jupiter.version>5.4.2</junit.jupiter.version>
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
