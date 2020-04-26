@@ -21,7 +21,7 @@ public class Account extends Client {
 		super.setClientAge(clientAge);
 		super.setClientRg(clientRg);
 		super.setUnderEightteen(underEightteenYearsOld);
-		super.setParentsAuthorization(true);
+		super.setParentsAuthorization(parentsAuthorization);
 		this.clientCurrency = clientCurrency;
 		this.newAccountNumber = newAccountNumber;
 		this.newAgencyNumber = newAgencyNumber;
