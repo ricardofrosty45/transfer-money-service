@@ -12,8 +12,8 @@ public class StartProject {
 	private static final Logger logger = LoggerFactory.getLogger(StartProject.class);
 
 	public static void main(String[] args) throws AccountNotCreatedException,TransferErrorException{
-		logger.info("## StartProject.main() - Initializing  Handler {. . .}");
 		TransferMoneyHandler handler = new TransferMoneyHandler();
+		logger.info("## StartProject.main() - Initializing  Handler {. . .}");
 		handler.handleRequest();
 	}
 

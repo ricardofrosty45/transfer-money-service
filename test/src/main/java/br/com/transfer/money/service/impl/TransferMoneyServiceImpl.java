@@ -21,6 +21,11 @@ public class TransferMoneyServiceImpl implements TransferMoneyService {
 
 	@Override
 	public void transferMoney(List<Account> accounts) throws TransferErrorException {
+		if (accounts == null) {
+			throw new TransferErrorException(ErrorsEnum.ANY_REGISTRED_ACCOUNTS.getMsg(),
+					ErrorsEnum.ANY_REGISTRED_ACCOUNTS.getCampo(), ErrorsEnum.ANY_REGISTRED_ACCOUNTS.getCode());
+		}
+
 		logger.info("##TransferMoneyService.transferMoney(): Transfering money into created accounts {}", accounts);
 		ListIterator<Account> it = accounts.listIterator();
 
@@ -32,9 +37,9 @@ public class TransferMoneyServiceImpl implements TransferMoneyService {
 				break;
 			}
 			it.next();
-			Account From = it.previous();
+			Account from = it.previous();
 
-			if (!transfer(to, From, new BigDecimal(BigInteger.valueOf(new Random().nextInt(100)), 0))) {
+			if (!transfer(to, from, new BigDecimal(BigInteger.valueOf(new Random().nextInt(100)), 0))) {
 				throw new TransferErrorException(ErrorsEnum.INSUFFICIENT_BANK_BALANCE.getMsg(),
 						ErrorsEnum.INSUFFICIENT_BANK_BALANCE.getCampo(),
 						ErrorsEnum.INSUFFICIENT_BANK_BALANCE.getCode());

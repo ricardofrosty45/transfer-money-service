@@ -63,7 +63,7 @@ public class CreateNewBankAccountServiceImpl implements CreateNewBankAccountServ
 		return listOfAccounts;
 	}
 
-	private void checkIfMinorsCanDoBankAccounts(List<Account> listOfAccounts) throws AccountNotCreatedException {
+	public void checkIfMinorsCanDoBankAccounts(List<Account> listOfAccounts) throws AccountNotCreatedException {
 		logger.info(
 				"## CreateNewBankAccountServiceImpl.createNewAccount(): Checking if this person can create an account ");
 		for (int i = 0; i < listOfAccounts.size(); i++) {
@@ -79,7 +79,7 @@ public class CreateNewBankAccountServiceImpl implements CreateNewBankAccountServ
 
 	}
 
-	private void checkIfRgIsTheSame(List<Account> listOfAccounts) throws AccountNotCreatedException {
+	public void checkIfRgIsTheSame(List<Account> listOfAccounts) throws AccountNotCreatedException {
 		List<String> rgs = new ArrayList<String>();
 
 		for (int i = 0; i < listOfAccounts.size(); i++) {
@@ -96,7 +96,7 @@ public class CreateNewBankAccountServiceImpl implements CreateNewBankAccountServ
 
 	}
 
-	private void checkIfCpfIsTheSame(List<Account> listOfAccounts) throws AccountNotCreatedException {
+	public void checkIfCpfIsTheSame(List<Account> listOfAccounts) throws AccountNotCreatedException {
 		List<String> cpfs = new ArrayList<String>();
 
 		for (int i = 0; i < listOfAccounts.size(); i++) {
