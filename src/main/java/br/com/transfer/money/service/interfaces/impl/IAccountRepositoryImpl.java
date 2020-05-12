@@ -6,18 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.transfer.money.service.entities.Account;
+import br.com.transfer.money.service.enumeration.ErrorsEnum;
+import br.com.transfer.money.service.exception.ClientNotFoundException;
 import br.com.transfer.money.service.interfaces.IAccountRepository;
 
 public class IAccountRepositoryImpl implements IAccountRepository {
 	private static final Logger logger = LoggerFactory.getLogger(IAccountRepositoryImpl.class);
 
 	@Override
-	public List<Account> getAccountById(Integer firstAccountId, Integer secondAccountIdTarget) throws NotFound {
+	public List<Account> getAccountById(Integer firstAccountId, Integer secondAccountIdTarget)
+			throws ClientNotFoundException {
 
 		List<Account> clients = new ArrayList<Account>();
 		HashMap<Integer, Account> clientMap = createAccountMap();
@@ -36,9 +38,10 @@ public class IAccountRepositoryImpl implements IAccountRepository {
 			clients.add(clientMap.get(secondAccountIdTarget));
 			logger.info("Adicionando na lista {...}");
 		}
-		
-		if(clients.isEmpty()) {
-			throw new NotFound();
+
+		if (clients.isEmpty()) {
+			throw new ClientNotFoundException(ErrorsEnum.DIDNT_FIND_ACCOUNTS.getMsg(),
+					ErrorsEnum.DIDNT_FIND_ACCOUNTS.getCampo(), ErrorsEnum.DIDNT_FIND_ACCOUNTS.getCode());
 		}
 
 		return clients;
@@ -51,8 +54,8 @@ public class IAccountRepositoryImpl implements IAccountRepository {
 		Account accountOne = new Account("Luan Ricardo De Luna", "10821107445", "9802352", 21,
 				new Random().nextInt(12563), new Random().nextInt(4323), new BigDecimal(100));
 
-		Account accountTwo = new Account("Ricardo De Luna", "12355423499", "1234567", 27,
-				new Random().nextInt(12563), new Random().nextInt(4323), new BigDecimal(100));
+		Account accountTwo = new Account("Ricardo De Luna", "12355423499", "1234567", 27, new Random().nextInt(12563),
+				new Random().nextInt(4323), new BigDecimal(100));
 
 		logger.info("Adicionando Clientes criados no HashMap");
 		clientMap.put(1, accountOne);

@@ -20,12 +20,12 @@ public class TransferMoneyServiceImpl implements TransferMoneyService {
 	@Override
 	public void transferMoney(List<Account> accounts) throws TransferErrorException {
 		if (accounts == null) {
-			throw new TransferErrorException(ErrorsEnum.NO_REGISTRED_ACCOUNTS.getMsg(),
-					ErrorsEnum.NO_REGISTRED_ACCOUNTS.getCampo(), ErrorsEnum.NO_REGISTRED_ACCOUNTS.getCode());
+			throw new TransferErrorException(ErrorsEnum.DIDNT_FIND_ACCOUNTS.getMsg(),
+					ErrorsEnum.DIDNT_FIND_ACCOUNTS.getCampo(), ErrorsEnum.DIDNT_FIND_ACCOUNTS.getCode());
 		}
 		if (accounts.isEmpty()) {
-			throw new TransferErrorException(ErrorsEnum.NO_REGISTRED_ACCOUNTS.getMsg(),
-					ErrorsEnum.NO_REGISTRED_ACCOUNTS.getCampo(), ErrorsEnum.NO_REGISTRED_ACCOUNTS.getCode());
+			throw new TransferErrorException(ErrorsEnum.DIDNT_FIND_ACCOUNTS.getMsg(),
+					ErrorsEnum.DIDNT_FIND_ACCOUNTS.getCampo(), ErrorsEnum.DIDNT_FIND_ACCOUNTS.getCode());
 		}
 
 		logger.info("##TransferMoneyService.transferMoney(): Transfering money into created accounts {}", accounts);
